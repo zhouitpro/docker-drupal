@@ -1,7 +1,7 @@
 Composer repositories
 =========
 
-`
+```
  {
      "type": "test package",
      "package": {
@@ -14,7 +14,7 @@ Composer repositories
        }
       }
  }
-`
+```
 
 mysql
 =========
