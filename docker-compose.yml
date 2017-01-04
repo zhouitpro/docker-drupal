@@ -1,0 +1,23 @@
+web:
+ image: nginx:alpine
+ ports:
+   - "8080:80"
+ volumes:
+   - ./web:/usr/share/nginx/html/
+   - ./config/nginx.conf:/etc/nginx/conf.d/site.conf
+ links:
+   - php
+   - mysql
+php:
+ image: php:7-fpm-alpine
+ volumes:
+    - ./web:/usr/share/nginx/html/
+mysql:
+  image: mysql:latest
+  volumes:
+    - ./db:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: drupal
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
