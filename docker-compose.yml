@@ -1,5 +1,5 @@
 web:
- image: nginx:alpine
+ image: nginx:latest
  ports:
    - "8080:80"
  volumes:
@@ -7,11 +7,12 @@ web:
    - ./config/nginx.conf:/etc/nginx/conf.d/site.conf
  links:
    - php
-   - mysql
 php:
- image: php:7-fpm-alpine
+ image: php:7-fpm
  volumes:
     - ./web:/usr/share/nginx/html/
+ links:
+    - mysql
 mysql:
   image: mysql:latest
   volumes:
@@ -19,5 +20,10 @@ mysql:
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: drupal
-    MYSQL_USER: root
-    MYSQL_PASSWORD: root
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: drupal
+    MYSQL_ROOT_PASSWORD: 'root'
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  ports:
+    - "3307:3306"
+  restart: always
