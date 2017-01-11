@@ -1,4 +1,4 @@
-web:
+nginx:
  image: nginx:latest
  ports:
    - "8080:80"
@@ -11,12 +11,15 @@ php:
  image: php:7-fpm
  volumes:
     - ./web:/usr/share/nginx/html
+    - ./config/php.ini:/usr/local/etc/php/conf.d/other-config.ini
  links:
     - mysql
+web:
+  build: ./docker
 mysql:
   image: mysql:latest
   volumes:
-    - ./db:/var/lib/mysql
+    - ./docker-runtime/db/:/var/lib/mysql
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: drupal
@@ -25,7 +28,7 @@ mysql:
     MYSQL_ROOT_PASSWORD: 'root'
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   ports:
-    - "3307:3306"
+    - "9527:3306"
   restart: always
 
 memcached:

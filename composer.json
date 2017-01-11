@@ -24,7 +24,8 @@
     "drupal/devel": "7.*",
     "drupal/views": "7.*",
     "drupal/ctools": "7.*",
-    "drupal/libraries": "^7.2"
+    "drupal/libraries": "^7.2",
+    "guzzle/guzzle": "^3.9"
   },
   "conflict": {
     "drupal/core": "8.*"
