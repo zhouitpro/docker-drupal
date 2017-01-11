@@ -19,12 +19,12 @@
     "composer/installers": "~1.0",
     "derhasi/composer-preserve-paths": "0.1.*",
     "drush/drush": "^8.1",
-    "drupal/drupal": "7.50.0",
-    "drupal/libraries": "7.2.3",
-    "drupal/module_filter": "7.2.0",
-    "drupal/devel": "7.1.5",
-    "drupal/views": "7.3.14",
-    "drupal/ctools": "^7.1"
+    "drupal/drupal": "^7.53",
+    "drupal/module_filter": "7.*",
+    "drupal/devel": "7.*",
+    "drupal/views": "7.*",
+    "drupal/ctools": "7.*",
+    "drupal/libraries": "^7.2"
   },
   "conflict": {
     "drupal/core": "8.*"
@@ -57,8 +57,7 @@
     "preserve-paths": [
       "web/vendor",
       "web/sites",
-      "web/profiles/.gitignore",
-      "web/profiles/olm"
+      "web/profiles/.gitignore"
     ]
   },
   "scripts": {
