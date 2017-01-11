@@ -14,9 +14,12 @@ php:
     - ./config/php.ini:/usr/local/etc/php/conf.d/other-config.ini
  links:
     - mysql
+
 web:
   build: ./docker
+
 mysql:
+
   image: mysql:latest
   volumes:
     - ./docker-runtime/db/:/var/lib/mysql
@@ -31,13 +34,13 @@ mysql:
     - "9527:3306"
   restart: always
 
-memcached:
-  image: memcached:alpine
+#memcached:
+#  image: memcached
 
-memcached-admin:
-  image: phynias/phpmemcachedadmin
-  ports:
-    - "8006:80"
+#memcached-admin:
+#  image: phynias/phpmemcachedadmin
+#  ports:
+#    - "8006:80"
 
 #elasticsearch:
 #  image: elasticsearch:latest
@@ -47,7 +50,7 @@ memcached-admin:
 #    - "9200:9200"
 
 # redis:
-#   image: redis:3.2-alpine
+#   image: redis:latest
 
 # varnish:
 #   image: wodby/drupal-varnish
